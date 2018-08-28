@@ -1,6 +1,6 @@
-# Online Marketplace Project
+# README.md for Online Marketplace
 
-## What does the Online Marketplace project do?
+## What does the Online Marketplace do?
 
 Marketplace is a DApp (decentralized application) that allows store owners to create stores and products and add products to stores and make them for sale to shoppers. When the contract is deployed an initial 'administrator' user is created and set to the address of the deployer. This administrator can update the user type (Admin, Owner) and status of users (Enabled, Disabled). All user access and permissioning is determined by the currently logged in user within the MetaMask plugin. A MetaMask user (except the Admin user) can register as a store owner. Store owners can create one or more stores. Store owners can also create one or more products.  For each store, the store owner can add from their list of products and set the amount of inventory and price for that store. Any other type of user is designated as a Shopper (shoppers logged in to a MetaMask account) for the marketplace. The Shopping menu shows a list of stores and their description. They can then choose a store and see a list of the products available in that store. A Shopper can then choose to purchase a product by clicking on the Buy button within the store. When they purchase a product, an order is created, the store product quantity available is decreased and the Shopper MetaMask wallet is debited by the store price of item purchased. The store owner's account is also credited for the price of the purchased item. In the marketplace contract there are entities and relationship represented by solidity structures. These include users, stores, products, store products and orders.
 
@@ -11,8 +11,8 @@ Marketplace is a DApp (decentralized application) that allows store owners to cr
 Online Marketplace is a truffle project that can run on a local development server. The project requires that Truffle is installed. See https://truffleframework.com/docs/truffle/getting-started/installation for details.
 
 Note that the following documents cover additional aspects of the submmitted solution:
-1. [Design Patterns](doc/design-patterns.md)
-2. [Avoiding Common Attacks](doc/avoiding-common-attacks.md)
+1. [Avoiding Common Attacks](doc/avoiding-common-attacks.md)
+2. [Design Patterns](doc/design-patterns.md)
 
 ### Step 1: Compilation
 
@@ -171,7 +171,9 @@ The above command will create something like the following output:
 
 At this point, a browser should open at [http://localhost:3000](http://localhost:3000) and you will see a screen that looks like this:
 
-![](doc/home-logged-out.png "Home page and metamask (logged out)")
+![](doc/01-home-logged-out.png "Home page and metamask (logged out)")
+
+Note that the above screen also show the MetaMask plugin prompting for wallet login.
 
 ## Part B: How to use the Online Marketplace
 
@@ -185,7 +187,7 @@ In order to use the Online Marketplace you will need to install and set up the M
 
 Open the MetaMask plugin and click link that says ```Import using account seed phrase```. This will open the plugin home page for MetaMask, again click on the ```Import using account seed phrase``` link. This will open the Restore your Account with Seed Phrase page. Enter in the mnemonic that was output from ganache-cli in Step 2 above (in example above this phrase is: ```action mouse age muscle park seed bread sick scatter odor text aspect```). Enter the New Password and Confirm Password fields and click Restore button. 
 
-![](doc/metamask-restore.png "Metamask restore your account with seed phrase")
+![](doc/02-metamask-restore.png "Metamask restore your account with seed phrase")
 
 Once you've restored the wallet, make sure you are still pointing to the local network by clicking on the dropdown labeled "Private Network" and re-selecting Localhost 8545.
 
@@ -193,49 +195,54 @@ Once you've restored the wallet, make sure you are still pointing to the local n
 
 Once you've restored from the Wallet Seed in prior step, you will have a single account set up (named Account 1 by default) that uses the 1st address of the ten (10) accounts set up by ganache-cli in Step 2 above. Now you go ahead and create three (3) more accounts (for a total of 4). Each time that you click on Create Account within the MetaMask plugin, it will create an account and associate it with the next available account within the list of ten (10) known accounts.
 
-![](doc/metamask-4-accounts.png "Metamask with 4 accounts created")
+![](doc/03-metamask-4-accounts.png "Metamask with 4 accounts created")
 
-Once you've create three (3) more accounts, choose Account 1 again, then open the home page and you will see that you are an Administrator. Click on Users menu item and you will see the admin user that was created by contract constructor.
+Once you've create three (3) more accounts, choose Account 1 again, then open the home page [http://localhost:3000](http://localhost:3000) and you will see that you are an Administrator (see "Admin" below Online Marketplace text in middle of screen). Click on Users menu item and you will see the admin user that was created by contract constructor.
 
-![](doc/user-list1.png "User list 1")
+![](doc/04-user-list1.png "User list 1")
 
-Go back to MetaMask plugin and choose Account 2, then open the home page and you will see that you are classified as a Shopper. Click on Register menu item and fill in the user name and click on the Register button. MetaMask will prompt you to confirm the transaction. Once complete, refresh the home page and you will now see that you are classified as a Store Owner.
+Go back to MetaMask plugin and choose Account 2, then open the home page [http://localhost:3000](http://localhost:3000) and you will see that you are classified as a Shopper. Click on Register menu item and fill in the user name and click on the Register button. MetaMask will prompt you to confirm the transaction. 
 
-![](doc/register-owner1.png "register 1st owner")
+![](doc/05-register-owner1.png "register 1st owner")
 
-Go back to MetaMask plugin and choose Account 3, then open the home page and again you will see that you are classified as a Shopper. Click on Register menu item and fill in the user name and click on the Register button. MetaMask will prompt you to confirm the transaction. Once complete, refresh the home page and you will now see that you are classified as another Store Owner.
+Once register function is complete, refresh the home page and you will now see that you are classified as a store Owner.
 
-![](doc/register-owner2.png "register 2nd owner")
+Go back to MetaMask plugin and choose Account 3, then open the home page [http://localhost:3000](http://localhost:3000) and again you will see that you are classified as a Shopper. Click on Register menu item and fill in the user name and click on the Register button. MetaMask will prompt you to confirm the transaction. Once complete, refresh the home page [http://localhost:3000](http://localhost:3000) and you will now see that you are classified as another store Owner.
 
-Go back to the home page http://localhost:3000 and click on the the Users menu item to see the list of current users. It should look something like this:
+![](doc/06-register-owner2.png "register 2nd owner")
 
-![](doc/user-list2.png "User list 2")
+Go back into MetaMask and choose Account 1, then return to the home page [http://localhost:3000](http://localhost:3000) and click on the the Users menu item to see the list of current users. It should look something like this:
 
-Logon as each Owner (switch MetaMask Account) and Create/Display Stores
+![](doc/07-user-list2.png "User list 2")
 
-![](doc/store-list.png "Store list")
+Using the MetaMask plugin, log in as owner 1 (Account 2) and create two stores. The project comes with three (3) pre-loaded store images that you can use (images/store1.png, images/store2.png, images/store3.png). You can also use external internet images by specifying the complete http(s) link reference. After creating the stores click on the Stores menu link and view the list of stores for owner 1 (Account 2). Log in as owner 2 (Account 3) and create some aone or more additional stores. After creating any stores, you can click on the Stores link to view the list of stores for the currently logged in owner. Below is an example of the Stores list.
 
-Logon as Owner and create a Product
+![](doc/08-store-list.png "Store list")
 
-![](doc/product-create.png "Product create")
+Again using the MetaMask plugin, ensure you are logged in as owner 1 (Account 2) and create products. The project comes with five (5) pre-loaded product images that you can use (images/product1.png through images/product5.png), or you can use a reference to a public image, e.g., https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvR00a9LQbFTislQXT1nJjOrAIOiMbm6i1dsyRlPtoi2Ab0uHA. Below is an example product create page.
 
-List the Products
+![](doc/09-product-create.png "Product create")
 
-![](doc/product-list.png "Product create")
+Once you have created some products, you can list out the products associated with the logged in user by clicking on the Products menu item. The following is an example of the Products list page.
 
-Create StoreProducts, one product selected and amounts filled in.
-![](doc/store-product-list1.png "Store product list 1")
+![](doc/10-product-list.png "Product create")
 
-Display Store Products, with multiple products added to store.
-![](doc/store-product-list2.png "Store product list 2")
+The next step in the store set up process is to associate products with stores and set the quantity and price of the product for a given store. The following is an example of the Store Products maintenance page showing a store being selected and a product being added.
 
-Now switch to Shopper, login as Account 4 (create account) and click on Shopping link
+![](doc/11-store-product-list1.png "Store product list 1")
 
-Img: Shopping.html showing stores
-![](doc/shopping-stores.png "Shopping stores")
+The following is Store Products list showing multiple products added to store.
 
-Enter a store and buy a Product
+![](doc/12-store-product-list2.png "Store product list 2")
 
-![](doc/shopping-store-products.png "Shopping store products")
+Once a store owner has configured the products for their stores, the next step is to log in as a shopper and start looking for and buying merchandise. To do this, open the MetaMask plugin and switch to Account 4. This is not associated with any user in the system, so it will default to a Shopper role. Open the home page [http://localhost:3000](http://localhost:3000) to confirm the Shopper role, then click on the Shopping link to show the list of stores that are in the Online Marketplace. The following is a page showing multiple stores in the Online MarketPlace.
 
-Now log in as Account 2, open the home page http://localhost:3000 and click on Stores, select a store and press the Withdraw button. This will withdraw the funds from the store and place them into the wallet of the logged in user (Account 2).
+![](doc/13-shopping-stores.png "Shopping stores")
+
+As a Shopper, you can enter a store from the store list and choose to buy any of the products listed. The following depicts a product that is chosen.
+
+![](doc/14-shopping-store-products.png "Shopping store products")
+
+The only remaining functionality is the withdraw function. Using MetaMask, log in as Account 2, open the home page [http://localhost:3000](http://localhost:3000) and click on Stores, select a store and press the Withdraw button. This will withdraw the funds from the store and place them into the wallet of the logged in user (Account 2). Below is an example of the Store page and the withdraw button:
+
+![](doc/15-store-withdraw.png "Store withdraw")
